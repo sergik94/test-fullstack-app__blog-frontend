@@ -39,7 +39,12 @@ export const Home = () => {
               <Post
                 id={obj._id}
                 title={obj.title}
-                imageUrl={obj.imgUrl ? `http://localhost:5000${obj.imgUrl}` : ''}
+                imageUrl={
+                  obj.imgUrl
+                    ? process.env.REACT_APP_API_URL + obj.imgUrl ||
+                      `http://localhost:5000${obj.imgUrl}`
+                    : ''
+                }
                 user={obj.author}
                 createdAt={obj.createdAt}
                 viewsCount={obj.viewCount}
